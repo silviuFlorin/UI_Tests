@@ -42,7 +42,7 @@ describe('MP3 audio content is being properly played back', function() {
         mediaSampleUtils.checkMediaVolumeChanged();
     });
 
-    it('Should loop the media type', function () {
+/*    it('Should loop the media type', function () {
 
         mediaSampleUtils.checkLoop();
     });
@@ -50,6 +50,6 @@ describe('MP3 audio content is being properly played back', function() {
     it('Should play the media type', function () {
 
         mediaSampleUtils.checkCanPlayMedia('audio/mpeg');
-    });
+    });*/
 
 }, 5000);

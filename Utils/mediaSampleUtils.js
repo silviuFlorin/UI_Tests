@@ -52,13 +52,13 @@ function MediaSampleUtils() {
         })
     };
 
-    this.checkLoop = function () {
+/*    this.checkLoop = function () {
         mediaSample.setLoop(true);
         mediaSample.pause();
         mediaSample.getDuration().then(function (res) {
             console.log(res);
         })
-/*        mediaSample.getDuration().then(function (duration) {
+        mediaSample.getDuration().then(function (duration) {
             console.log('Duration: ', duration);
             expect(duration).not.toBeLessThan(0);
 
@@ -66,8 +66,8 @@ function MediaSampleUtils() {
                 mediaSample.play();
                 expect(mediaSample.getCurrentTime()).toBeLessThan(time)
             })
-        })*/
-    }
+        })
+    }*/
 }
 
 module.exports = MediaSampleUtils;
