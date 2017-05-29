@@ -52,6 +52,16 @@ function MediaSampleUtils() {
         })
     };
 
+    this.checkIfControlsAreHidden = function(){
+        mediaSample.setControls(false);
+           expect(!mediaSample.getControls());
+    };
+
+    this.checkIfControlsAreDisplayed = function(){
+        mediaSample.setControls(true);
+        expect(mediaSample.getControls());
+    };
+
 /*    this.checkLoop = function () {
         mediaSample.setLoop(true);
         mediaSample.pause();

@@ -42,6 +42,16 @@ describe('MP3 audio content is being properly played back', function() {
         mediaSampleUtils.checkMediaVolumeChanged();
     });
 
+    it('Should hide controls', function () {
+
+        mediaSampleUtils.checkIfControlsAreHidden();
+    });
+
+    it('Should display controls', function () {
+
+        mediaSampleUtils.checkIfControlsAreDisplayed();
+    });
+
 /*    it('Should loop the media type', function () {
 
         mediaSampleUtils.checkLoop();

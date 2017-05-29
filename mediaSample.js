@@ -83,11 +83,19 @@ function MediaSample() {
 
     this.setLoop = function (value) {
         browser.executeScript('arguments[0].loop = arguments[1]', this.video, value);
-    }
+    };
 
     this.getLoop = function () {
         return browser.executeScript('return arguments[0].loop', this.video);
-    }
+    };
+
+    this.setControls = function(value) {
+        browser.executeScript('arguments[0].controls = arguments[1]', this.video, value);
+    };
+
+    this.getControls = function() {
+        return browser.executeScript('return arguments[0].controls', this.video);
+    };
 
 }
 
