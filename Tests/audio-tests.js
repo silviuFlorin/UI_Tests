@@ -1,9 +1,9 @@
 /**
  * Created by silviu.checherita on 5/25/2017.
  */
-const MediaSampleUtils = require('../Utils/mediaSampleUtils');
+const MediaSampleUtils = require('../util/mediaSampleUtils');
 const BrowserMode = require('../data-providers/browserMode.json');
-const BrowserUtils = require('../Utils/browserUtils');
+const BrowserUtils = require('../util/browserUtils');
 
 describe('MP3 audio content is being properly played back', function() {
 
