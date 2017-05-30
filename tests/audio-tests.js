@@ -2,71 +2,76 @@
  * Created by silviu.checherita on 5/25/2017.
  */
 const MediaSampleUtils = require('../utils/mediaSampleUtils');
-const BrowserMode = require('../data-providers/browserMode.json');
 const BrowserUtils = require('../utils/browserUtils');
+const MediaData = require('../data-providers/mediaData');
+const using = require('jasmine-data-provider');
 
-describe('MP3 audio content is being properly played back', function() {
+describe('Audio content is being properly played back', function() {
 
     let browserUtils = new BrowserUtils();
     let mediaSampleUtils = new MediaSampleUtils();
 
-    it('Should launch Firefox and open the following MP3 audio sample.', function () {
+    using(MediaData.mediaData, function (data) {
 
-        browserUtils.checkBrowserOpenedAndLinkAccessed(BrowserMode.SELF, 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3');
-    });
+        it('Should launch Firefox and open the following ' + data.type + ' audio sample.', function () {
 
-    it('Should load the MP3 Sample', function () {
-        mediaSampleUtils.checkMediaSampleLoaded();
-    });
+            browserUtils.checkBrowserOpenedAndLinkAccessed(data.browserMode, data.uri);
+        });
 
-    it('Should not play when autoplay is set to false', function () {
+        it('Should load the ' + data.type + ' Sample - ' + data.type, function () {
+            mediaSampleUtils.checkMediaSampleLoaded();
+        });
 
-        mediaSampleUtils.checkMediaNotPlayingIfAutoplayIsFalse();
-    });
+        it('Should not play when autoplay is set to false - ' + data.type, function () {
 
-    it('Should play when pressing the play button', function () {
+            mediaSampleUtils.checkMediaNotPlayingIfAutoplayIsFalse();
+        });
 
-        mediaSampleUtils.checkMediaIsPlaying();
-    });
+        it('Should play when pressing the play button - ' + data.type, function () {
 
-    it('Should pause when pressing the pause button', function () {
+            mediaSampleUtils.checkMediaIsPlaying();
+        });
 
-        mediaSampleUtils.checkMediaIsPaused();
-    });
+        it('Should pause when pressing the pause button - ' + data.type, function () {
 
-    it('Should mute when pressing the mute button', function () {
+            mediaSampleUtils.checkMediaIsPaused();
+        });
 
-        mediaSampleUtils.checkMediaIsMuted();
-    });
+        it('Should mute when pressing the mute button - ' + data.type, function () {
 
-    it('Should unmute when pressing the unmute button', function () {
+            mediaSampleUtils.checkMediaIsMuted();
+        });
 
-        mediaSampleUtils.checkMediaIsUnmuted();
-    });
+        it('Should unmute when pressing the unmute button - ' + data.type, function () {
 
-    it('Should change the volume level', function () {
+            mediaSampleUtils.checkMediaIsUnmuted();
+        });
 
-        mediaSampleUtils.checkMediaVolumeChanged(0.5);
-    });
+        it('Should change the volume level - ' + data.type, function () {
 
-    it('Should hide controls', function () {
+            mediaSampleUtils.checkMediaVolumeChanged(0.5);
+        });
 
-        mediaSampleUtils.checkIfControlsAreHidden();
-    });
+        it('Should hide controls - ' + data.type, function () {
 
-    it('Should display controls', function () {
+            mediaSampleUtils.checkIfControlsAreHidden();
+        });
 
-        mediaSampleUtils.checkIfControlsAreDisplayed();
-    });
+        it('Should display controls - ' + data.type, function () {
 
-/*    it('Should loop the media type', function () {
+            mediaSampleUtils.checkIfControlsAreDisplayed();
+        });
 
-        mediaSampleUtils.checkLoop();
-    });
+        /*    it('Should loop the media type', function () {
 
-    it('Should play the media type', function () {
+         mediaSampleUtils.checkLoop();
+         });
 
-        mediaSampleUtils.checkCanPlayMedia('audio/mpeg');
-    });*/
+         it('Should play the media type', function () {
+
+         mediaSampleUtils.checkCanPlayMedia('audio/mpeg');
+         });*/
+    })
+
 
 }, 5000);
