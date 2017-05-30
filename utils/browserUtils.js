@@ -6,9 +6,7 @@ const BrowserMode = require('../data-providers/browserMode.json');
 
 function BrowserUtils() {
 
-    browser.ignoreSynchronization = true;
-
-    this.openBrowser = function (mode, url) {
+    this.openBrowser = (mode, url) => {
         switch (mode) {
             case BrowserMode.SELF:
                 openBrowserInSelf(url);
@@ -30,10 +28,10 @@ function BrowserUtils() {
 
     function openBrowserInNewTab(url) {
         browser.executeScript("window.open('" + url + "','_blank');");
-        browser.getAllWindowHandles().then(function (handles) {
+        browser.getAllWindowHandles().then((handles) => {
             return browser.switchTo().window(handles[1]);
         })
-            .then(function () {
+            .then(() => {
                 browser.get(url)
             });
     }
@@ -42,7 +40,18 @@ function BrowserUtils() {
         // TODO implement private browsing
     }
 
-    this.checkBrowserOpenedAndLinkAccessed = function(mode, url){
+    this.closeOpenedTab = () => {
+        browser.ignoreSynchronization = false;
+        browser.getAllWindowHandles()
+            .then((handles) => {
+                browser.driver.switchTo().window(handles[1]);
+                browser.driver.close();
+                browser.driver.switchTo().window(handles[0]);
+            })
+            .catch(() => {})
+    };
+
+    this.checkBrowserOpenedAndLinkAccessed = (mode, url) => {
         this.openBrowser(mode, url);
         expect(browser.getCurrentUrl()).toEqual(url);
     }

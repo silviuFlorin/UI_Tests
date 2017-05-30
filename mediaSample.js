@@ -12,83 +12,83 @@ function MediaSample() {
 
     this.video = element(by.tagName('video'));
 
-    this.waitToLoad = function(){
+    this.waitToLoad = () => {
         browser.wait(expectedConditions.presenceOf(this.video), 5000);
     };
 
-    this.isLoaded = function () {
+    this.isLoaded = () => {
         return this.video.isPresent()
     };
 
-    this.getCurrentTime = function() {
+    this.getCurrentTime = () => {
         return browser.executeScript('return arguments[0].currentTime', this.video);
     };
 
-    this.setCurrentTime = function(value) {
+    this.setCurrentTime = (value) => {
         browser.executeScript('arguments[0].currentTime = arguments[1]', this.video, value);
     };
 
-    this.pause = function() {
+    this.pause = () => {
         browser.executeScript('arguments[0].pause()', this.video);
     };
 
-    this.isPaused = function() {
+    this.isPaused = () => {
         return browser.executeScript('return arguments[0].paused', this.video);
     };
 
-    this.play = function() {
+    this.play = () => {
         browser.executeScript('arguments[0].play()', this.video);
     };
 
-    this.getDuration = function() {
+    this.getDuration = () => {
         return browser.executeScript('return arguments[0].duration', this.video);
     };
 
-    this.isMuted = function() {
+    this.isMuted = () => {
         return browser.executeScript('return arguments[0].muted', this.video);
     };
-    
-    this.setMuted = function(value) {
+
+    this.setMuted = (value) => {
         browser.executeScript('arguments[0].muted = arguments[1]', this.video, value);
     };
 
-    this.getVolume = function() {
+    this.getVolume = () => {
         return browser.executeScript('return arguments[0].volume', this.video);
     };
 
-    this.setVolume = function(value) {
+    this.setVolume = (value) => {
         browser.executeScript('arguments[0].volume = arguments[1]', this.video, value);
     };
 
-    this.setAutoPlay = function(value) {
+    this.setAutoPlay = (value) => {
         browser.executeScript('arguments[0].autoplay = arguments[1]', this.video, value);
     };
 
-    this.getAutoPlay = function() {
+    this.getAutoPlay = () => {
         return browser.executeScript('return arguments[0].autoplay', this.video);
     };
 
-    this.load = function() {
+    this.load = () => {
         return browser.executeScript('arguments[0].load()', this.video);
     };
 
-    this.canPlayType = function(mediaType) {
+    this.canPlayType = (mediaType) => {
         return browser.executeScript('return arguments[0].canPlayType(arguments[1])', this.video, mediaType);
     };
 
-    this.setLoop = function (value) {
+    this.setLoop = (value) => {
         browser.executeScript('arguments[0].loop = arguments[1]', this.video, value);
     };
 
-    this.getLoop = function () {
+    this.getLoop = () => {
         return browser.executeScript('return arguments[0].loop', this.video);
     };
 
-    this.setControls = function(value) {
+    this.setControls = (value) => {
         browser.executeScript('arguments[0].controls = arguments[1]', this.video, value);
     };
 
-    this.getControls = function() {
+    this.getControls = () => {
         return browser.executeScript('return arguments[0].controls', this.video);
     };
 }

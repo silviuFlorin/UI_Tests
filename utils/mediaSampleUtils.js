@@ -8,75 +8,75 @@ function MediaSampleUtils() {
 
     let mediaSample = new MediaSample();
 
-    this.checkMediaSampleLoaded = function(){
+    this.checkMediaSampleLoaded = () => {
         mediaSample.waitToLoad();
         expect(mediaSample.isLoaded()).toBeTruthy();
     };
 
-    this.checkMediaNotPlayingIfAutoplayIsFalse = function(){
+    this.checkMediaNotPlayingIfAutoplayIsFalse = () => {
         mediaSample.setAutoPlay(false);
         mediaSample.load();
         expect(mediaSample.isPaused()).toBe(true);
     };
 
-    this.checkMediaIsPlaying = function(){
+    this.checkMediaIsPlaying = () => {
         mediaSample.play();
         expect(mediaSample.isPaused()).toBe(false);
     };
 
-    this.checkMediaIsPaused = function(){
+    this.checkMediaIsPaused = () => {
         mediaSample.pause();
         expect(mediaSample.isPaused()).toBe(true);
     };
 
-    this.checkMediaIsMuted = function(){
+    this.checkMediaIsMuted = () => {
         mediaSample.setMuted(true);
         expect(mediaSample.isMuted()).toBe(true);
     };
 
-    this.checkMediaIsUnmuted = function(){
+    this.checkMediaIsUnmuted = () => {
         mediaSample.setMuted(false);
         expect(mediaSample.isMuted()).toBe(false);
     };
 
-    this.checkMediaVolumeChanged = function(volume){
+    this.checkMediaVolumeChanged = (volume) => {
         mediaSample.setVolume(volume);
         expect(mediaSample.getVolume()).toEqual(volume);
     };
 
-    this.checkCanPlayMedia = function (mediaType) {
-        mediaSample.canPlayType(mediaType).then(function (res) {
+    this.checkCanPlayMedia = (mediaType) => {
+        mediaSample.canPlayType(mediaType).then((res) => {
             expect(['maybe', 'probably'].includes(res)).toBe(true);
         })
     };
 
-    this.checkIfControlsAreHidden = function(){
+    this.checkIfControlsAreHidden = () => {
         mediaSample.setControls(false);
-           expect(!mediaSample.getControls());
+        expect(!mediaSample.getControls());
     };
 
-    this.checkIfControlsAreDisplayed = function(){
+    this.checkIfControlsAreDisplayed = () => {
         mediaSample.setControls(true);
         expect(mediaSample.getControls());
     };
 
 
-/*    this.checkLoop = function () {
-        mediaSample.setLoop(true);
-        mediaSample.pause();
-        mediaSample.getDuration().then(function (res) {
-            console.log(res);
-        })
-        mediaSample.getDuration().then(function (duration) {
-            console.log('Duration: ', duration);
-            expect(duration).not.toBeLessThan(0);
+    /*    this.checkLoop =  () => {
+     mediaSample.setLoop(true);
+     mediaSample.pause();
+     mediaSample.getDuration().then( (res) => {
+     console.log(res);
+     })
+     mediaSample.getDuration().then( (duration) => {
+     console.log('Duration: ', duration);
+     expect(duration).not.toBeLessThan(0);
 
-            mediaSample.setCurrentTime(duration).then(function (time) {
-                mediaSample.play();
-                expect(mediaSample.getCurrentTime()).toBeLessThan(time)
-            })
-        })
-    }*/
+     mediaSample.setCurrentTime(duration).then( (time) => {
+     mediaSample.play();
+     expect(mediaSample.getCurrentTime()).toBeLessThan(time)
+     })
+     })
+     }*/
 }
 
 module.exports = MediaSampleUtils;
