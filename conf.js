@@ -4,7 +4,7 @@
 
 exports.config = {
     seleniumAddress: 'http://localhost:4444/wd/hub',
-    specs: ['Tests/audio-tests.js'],
+    specs: ['tests/audio-tests.js'],
     capabilities: {
         browserName: "firefox",
         firefox_binary: "C:/Program Files/Nightly/firefox.exe",

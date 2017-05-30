@@ -8,8 +8,7 @@ function MediaSampleUtils() {
 
     let mediaSample = new MediaSample();
 
-    this.checkMediaSampleLoaded = function(url){
-        mediaSample.goTo(url);
+    this.checkMediaSampleLoaded = function(){
         mediaSample.waitToLoad();
         expect(mediaSample.isLoaded()).toBeTruthy();
     };
@@ -40,8 +39,7 @@ function MediaSampleUtils() {
         expect(mediaSample.isMuted()).toBe(false);
     };
 
-    this.checkMediaVolumeChanged = function(){
-        let volume = 0.5;
+    this.checkMediaVolumeChanged = function(volume){
         mediaSample.setVolume(volume);
         expect(mediaSample.getVolume()).toEqual(volume);
     };

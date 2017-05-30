@@ -1,15 +1,22 @@
 /**
  * Created by silviu.checherita on 5/25/2017.
  */
-const MediaSampleUtils = require('../Utils/mediaSampleUtils');
+const MediaSampleUtils = require('../utils/mediaSampleUtils');
+const BrowserMode = require('../data-providers/browserMode.json');
+const BrowserUtils = require('../utils/browserUtils');
 
 describe('MP3 audio content is being properly played back', function() {
 
+    let browserUtils = new BrowserUtils();
     let mediaSampleUtils = new MediaSampleUtils();
 
     it('Should launch Firefox and open the following MP3 audio sample.', function () {
 
-        mediaSampleUtils.checkMediaSampleLoaded('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3');
+        browserUtils.checkBrowserOpenedAndLinkAccessed(BrowserMode.SELF, 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3');
+    });
+
+    it('Should load the MP3 Sample', function () {
+        mediaSampleUtils.checkMediaSampleLoaded();
     });
 
     it('Should not play when autoplay is set to false', function () {
@@ -39,7 +46,7 @@ describe('MP3 audio content is being properly played back', function() {
 
     it('Should change the volume level', function () {
 
-        mediaSampleUtils.checkMediaVolumeChanged();
+        mediaSampleUtils.checkMediaVolumeChanged(0.5);
     });
 
     it('Should hide controls', function () {

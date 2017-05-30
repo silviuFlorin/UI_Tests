@@ -8,14 +8,9 @@
 
 function MediaSample() {
 
-    const expectedConditions = protractor.ExpectedConditions;
+    let expectedConditions = protractor.ExpectedConditions;
 
     this.video = element(by.tagName('video'));
-
-    this.goTo = function(url) {
-        browser.ignoreSynchronization = true;
-        browser.get(url);
-    };
 
     this.waitToLoad = function(){
         browser.wait(expectedConditions.presenceOf(this.video), 5000);
@@ -96,7 +91,6 @@ function MediaSample() {
     this.getControls = function() {
         return browser.executeScript('return arguments[0].controls', this.video);
     };
-
 }
 
 module.exports = MediaSample;
