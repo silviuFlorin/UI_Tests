@@ -60,7 +60,7 @@ function MediaSampleUtils() {
         expect(mediaSample.getControls());
     };
 
-    
+
 /*    this.checkLoop = function () {
         mediaSample.setLoop(true);
         mediaSample.pause();
