@@ -7,6 +7,7 @@ const BrowserMode = require('../data-providers/browserMode.json');
 function BrowserUtils() {
 
     this.openBrowser = (mode, url) => {
+
         switch (mode) {
             case BrowserMode.SELF:
                 openBrowserInSelf(url);
@@ -41,7 +42,6 @@ function BrowserUtils() {
     }
 
     this.closeOpenedTab = () => {
-        browser.ignoreSynchronization = false;
         browser.getAllWindowHandles()
             .then((handles) => {
                 browser.driver.switchTo().window(handles[1]);

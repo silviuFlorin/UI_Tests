@@ -8,18 +8,20 @@ const using = require('jasmine-data-provider');
 
 let browserUtils = new BrowserUtils();
 
+beforeAll(() => {
+    browser.manage().window().maximize();
+});
+
 beforeEach(() => {
     browser.ignoreSynchronization = true;
 });
 
 afterEach(() => {
+    browser.ignoreSynchronization = false;
     browserUtils.closeOpenedTab();
 });
 
-
 using(MediaData.mediaData, (data) => {
-
-
     let mediaSampleUtils = new MediaSampleUtils();
 
     describe(data.type + ' content is being properly played back', () => {
@@ -27,7 +29,6 @@ using(MediaData.mediaData, (data) => {
         it('Should launch Firefox and open the following ' + data.type + ' audio sample.', () => {
 
             browserUtils.checkBrowserOpenedAndLinkAccessed(data.browserMode, data.uri);
-            browser.sleep(3000);
         });
 
         it('Should load the ' + data.type + ' Sample - ' + data.type, () => {
