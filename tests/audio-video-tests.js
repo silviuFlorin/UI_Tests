@@ -6,6 +6,7 @@ const BrowserUtils = require('../utils/browserUtils');
 const MediaData = require('../data-providers/mediaData');
 const using = require('jasmine-data-provider');
 
+
 let browserUtils = new BrowserUtils();
 
 beforeAll(() => {
