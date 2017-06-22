@@ -1,0 +1,14 @@
+# environment
+.DS_Store
+.idea
+.env/
+.env-*/
+env/
+env-*/
+
+# File types to ignore
+*.zip
+*.diff
+*.flow
+*.bak
+*.txt
