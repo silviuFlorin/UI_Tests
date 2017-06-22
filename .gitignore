@@ -1,6 +1,6 @@
 # environment
 .DS_Store
-.idea
+.idea/
 .env/
 .env-*/
 env/
@@ -12,3 +12,7 @@ env-*/
 *.flow
 *.bak
 *.txt
+
+# Dependency directories
+node_modules/
+jspm_packages/
